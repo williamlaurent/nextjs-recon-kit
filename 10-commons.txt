@@ -1,0 +1,19 @@
+console.log(window);
+
+Object.keys(window).filter(k => !k.startsWith('_') && !k.includes('chrome'));
+
+console.log(window.__NEXT_DATA__);
+
+performance.getEntriesByType('resource').filter(r => r.name.includes('/api'));
+
+getEventListeners(document);
+
+document.body.innerHTML += "<img src=x onerror=alert(1)>";
+
+document.cookie.split(';').map(x=>x.trim());
+
+[...document.scripts].map(s => s.src).filter(Boolean);
+
+Object.entries(localStorage); Object.entries(sessionStorage);
+
+window.onerror = console.error;
