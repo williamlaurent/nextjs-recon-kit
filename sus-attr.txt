@@ -1,0 +1,5 @@
+// xss attr
+[...document.querySelectorAll('*')].filter(el => {
+  for (const a of el.attributes) if (/on\w+/i.test(a.name)) return true;
+  return false;
+}).slice(0,30);
