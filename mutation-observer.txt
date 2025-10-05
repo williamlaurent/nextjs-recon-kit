@@ -1,0 +1,13 @@
+// dom injection
+// mutation-observer
+const obs = new MutationObserver((muts) => {
+  muts.forEach(m => {
+    if (m.addedNodes && m.addedNodes.length) {
+      console.warn('DOM nodes added:', m.addedNodes);
+    }
+    if (m.type === 'attributes') {
+      console.warn('Attribute changed on', m.target, m.attributeName);
+    }
+  });
+});
+obs.observe(document.documentElement, {childList:true, subtree:true, attributes:true});
