@@ -1,0 +1,8 @@
+// SW registrations
+navigator.serviceWorker?.getRegistrations().then(r=>console.log('SW regs:', r));
+
+// Sentry presence
+console.log('Sentry?', !!window.Sentry, window.Sentry?.getCurrentHub?.()?.getClient?.()?.getOptions?.());
+
+// Feature flags on window
+Object.keys(window).filter(k => /feature|flag|env|NEXT_PUBLIC/i.test(k));
