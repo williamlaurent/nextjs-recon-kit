@@ -1,0 +1,15 @@
+(() => {
+  const info = {
+    url: location.href,
+    nextData: window.__NEXT_DATA__ || null,
+    scripts: [...document.scripts].map(s=>s.src).filter(Boolean),
+    resources: performance.getEntriesByType('resource').slice(-30).map(r=>({name:r.name, type:r.initiatorType})),
+    localStorageKeys: Object.keys(localStorage),
+    sessionStorageKeys: Object.keys(sessionStorage),
+    cookieNames: document.cookie ? document.cookie.split(';').map(c=>c.split('=')[0].trim()) : [],
+    serviceWorkers: navigator.serviceWorker ? 'registered? check navigator.serviceWorker.getRegistrations()' : 'no SW api',
+    metaCSP: document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content || null
+  };
+  console.table(info.resources);
+  return info;
+})();
